@@ -6,7 +6,7 @@ from random import randint
 
 client = discord.Client()
 prefix = ';'
-ovnerID = ['201741426038538242', '109710323094683648']
+ovnerID = ['201741426038538242', '109710323094683648', '188092131376758784']
 staff = list()
 
 with open('staff.json', 'r') as f:
