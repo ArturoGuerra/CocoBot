@@ -6,7 +6,7 @@ from random import randint
 
 client = discord.Client()
 prefix = ';'
-ovnerID = ['201741426038538242']
+ovnerID = ['201741426038538242', '109710323094683648']
 staff = list()
 
 with open('staff.json', 'r') as f:
@@ -26,58 +26,31 @@ async def on_message(message):
     global ovnerID
     global ovner_state
     global bot_state
-    
+
     if message.content:
         numb = randint(1,9)
         if message.content.startswith('{}cocobot'.format(prefix)) or message.content.startswith('{}kaori'.format(prefix)) and bot_state and not message.author.id == client.user.id:
             if numb == 1:
                 msg = 'ERROR OPERATION COMPLETED VITH NO ERRORS'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-             #   await client.send_message(discord.Object(id='189199638450929664'), 'ERROR OPERATION COMPLETED VITH NO ERRORS')
-            if numb == 2:
+            elif numb == 2:
                 msg = 'ERROR OPERATION COMPLETED VITH NO ERRORS'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-             #   await client.send_message(discord.Object(id='189199638450929664'), 'ERROR OPERATION COMPLETED VITH NO ERRORS')
-            if numb == 3:
-                msg = 'ERROR COCOBOT INITIALIZED VITH NO ERRORS'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-              #  await client.send_message(discord.Object(id='189199638450929664'), 'ERROR COCOBOT INITIALIZED VITH NO ERRORS')
-            if numb == 4:
+            elif numb == 3:
+                msg = 'ERROR {} INITIALIZED VITH NO ERRORS'.format(client.user.name)
+            elif numb == 4:
                 msg = 'ERROR FUNTION EXECUTED CORRECTLY'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-             #   await client.send_message(discord.Object(id='189199638450929664'), 'ERROR FUNTION EXECUTED CORRECTLY')
-            if numb == 5:
-                msg = 'ERROR COCOBOT TURNED OFF SUCCESSFULLY'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-              #  await client.send_message(discord.Object(id='189199638450929664'), 'ERROR COCOBOT TURNED OFF SUCCESSFULLY')
-            if numb == 6:
-                msg = "ERROR COCOBOT CAN'T CHANGE IT'S NAME"
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-             #   await client.send_message(discord.Object(id='189199638450929664'), "ERROR COCOBOT CAN'T CHANGE IT'S NAME")
-            if numb == 7:
-                msg = 'ERROR COCOBOT GOT BLOCKED'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-               # await client.send_message(discord.Object(id='189199638450929664'), 'ERROR COCOBOT GOT BLOCKED')
-            if numb == 8:
+            elif numb == 5:
+                msg = 'ERROR {} TURNED OFF SUCCESSFULLY'.format(client.user.name)
+            elif numb == 6:
+                msg = "ERROR {} CAN'T CHANGE IT'S NAME".format(client.user.name)
+            elif numb == 7:
+                msg = 'ERROR {} GOT BLOCKED'.format(client.user.name)
+            elif numb == 8:
                 msg = 'ERROR NO ERRORS VERE FOUND!!!'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-               # await client.send_message(discord.Object(id='189199638450929664'), 'ERROR NO ERRORS VERE FOUND!!!')
-            if numb == 9:
-                msg = 'ERROR COCOBOT IS NOT BROKEN'
-                embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-                await client.send_message(message.channel, embed=embed)
-                #await client.send_message(discord.Object(id='189199638450929664'), 'ERROR NO ERRORS VERE FOUND!!!')
-            
-            
-              
+            elif numb == 9:
+                msg = 'ERROR {} IS NOT BROKEN'.format(client.user.name)
+            embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
+            await client.send_message(message.channel, embed=embed)
+
         # Staff only commands
         if message.content.startswith('{}cocobot'.format(prefix)) and (staff_state or ovner_state):
             staff_state = False
@@ -96,14 +69,14 @@ async def on_message(message):
             await client.send_message(message.channel, 'ERROR THE FUNCTION EXECUTED CORRECTLY')
 
 
-            
+
     #Authorizes credentials by userID or by Role in a user
     if message.author.id in ovnerID:
-        ovner_state = True                
+        ovner_state = True
     for role in staff:
         role_ob = discord.utils.get(message.server.roles, id=role)
         if role_ob in message.author.roles:
             staff_state = True
-    
-        
-client.run('MjYzNzMxNjAwODYzMzk1ODUy.C0WSuQ.rs3w2AYR3Wy9xaQL-57NssnF6rs')  
+
+
+client.run('MjYzNzMxNjAwODYzMzk1ODUy.C0WSuQ.rs3w2AYR3Wy9xaQL-57NssnF6rs')
