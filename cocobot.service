@@ -1,0 +1,10 @@
+[Unit]
+Description=CocoBot
+
+[Service]
+Type=simple
+ExecStart=/data/bots/coco/coconoddles.py
+User=server
+
+[Install]
+WantedBy=multi-user.target
