@@ -18,7 +18,9 @@ ovner_state = False
 
 @client.event
 async def on_ready():
-    print('ready')
+    print(client.user)
+    print(client.user.id)
+    print('------READY-------')
 @client.event
 async def on_message(message):
     global staff
