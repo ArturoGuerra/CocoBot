@@ -51,8 +51,7 @@ async def on_message(message):
                 msg = 'ERROR NO ERRORS VERE FOUND!!!'
             elif numb == 9:
                 msg = 'ERROR {} IS NOT BROKEN'.format(client.user.name)
-            embed = discord.Embed(title=client.user.name, type='bold', description=msg, color=0x0EA8F0)
-            await client.send_message(message.channel, embed=embed)
+            await client.send_message(message.channel, msg)
 
         # Staff only commands
         if message.content.startswith('{}cocobot'.format(prefix)) and (staff_state or ovner_state):
