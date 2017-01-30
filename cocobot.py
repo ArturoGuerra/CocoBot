@@ -6,11 +6,13 @@ from random import randint
 
 client = discord.Client()
 prefix = ';'
-ovnerID = ['201741426038538242', '109710323094683648', '188092131376758784']
 staff = list()
 
 with open('staff.json', 'r') as f:
     staff = json.load(f)
+
+with open('config.json', 'r') as f:
+    config = json.load(f)
 
 staff_state = False
 bot_state = True
@@ -25,7 +27,6 @@ async def on_ready():
 async def on_message(message):
     global staff
     global staff_state
-    global ovnerID
     global ovner_state
     global bot_state
 
@@ -73,7 +74,7 @@ async def on_message(message):
 
 
     #Authorizes credentials by userID or by Role in a user
-    if message.author.id in ovnerID:
+    if message.author.id in config['ovner']:
         ovner_state = True
     for role in staff:
         role_ob = discord.utils.get(message.server.roles, id=role)
@@ -81,4 +82,4 @@ async def on_message(message):
             staff_state = True
 
 
-client.run('MjYzNzMxNjAwODYzMzk1ODUy.C0WSuQ.rs3w2AYR3Wy9xaQL-57NssnF6rs')
+client.run(config['token'])
