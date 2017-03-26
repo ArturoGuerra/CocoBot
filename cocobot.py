@@ -45,10 +45,9 @@ async def on_message(message):
                 tings = (
                         f"Error {bot.client.user.name} started !!!!",
                         f"Error {bot.client.user.name} is borked",
-                        f"ERROR OPERATION COMPLETED VITH NO ERRORS",
-                        f"Error run `sudo rm -rf / --no-preserve-root`",
+                        f"ERROR OPERATION COMPLETED WITH NO ERRORS",
                         f"Error {bot.client.user.name} failed to change its name",
-                        f"Error no errors vhere found !!!"
+                        f"Error no errors where found !!!"
                         )
                 numb = random.randint(0, len(tings) - 1)
                 msg = tings[numb]
