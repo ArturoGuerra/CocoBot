@@ -1,7 +1,6 @@
 #!/usr/bin/env python3.6
 import json
 import regex
-import config
 import random
 import discord
 import logging
@@ -10,10 +9,10 @@ import asyncio
 class Config():
     def __init__(self, app):
         try:
-            with open('config.json', 'r') as f:
+            with open('config/config.json', 'r') as f:
                 self.config = json.load(f)
         except Exception as e:
-            with open('config.json', 'w') as f:
+            with open('config/config.json', 'w') as f:
                 self.config = dict()
                 token = input("Token: ")
                 self.config['token'] = token
@@ -23,7 +22,7 @@ class Config():
 class cocoBot():
     def __init__(self):
         self.client = discord.Client()
-        self.config = Config()
+        self.config = Config(self)
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger('discord')
         self.commands = ('kaori', 'cocobot', 'dixionary', 'caori')
@@ -33,8 +32,8 @@ def main():
     bot.client.run(bot.config.token())
 @bot.client.event
 async def on_ready():
-    bot.logger.info(f"UserName: {bot.user.name}")
-    bot.logger.info(f"user ID: {bot.user.id}")
+    bot.logger.info(f"UserName: {bot.client.user.name}")
+    bot.logger.info(f"user ID: {bot.client.user.id}")
 @bot.client.event
 async def on_message(message):
     recmp = regex.compile("^\;[A-z]+.*")
@@ -44,11 +43,11 @@ async def on_message(message):
             cmd = splitmsg[0].strip(';')
             if cmd in bot.commands:
                 tings = (
-                        f"Error {bot.client.name} started !!!!",
-                        f"Error {bot.client.name} is borked",
+                        f"Error {bot.client.user.name} started !!!!",
+                        f"Error {bot.client.user.name} is borked",
                         f"ERROR OPERATION COMPLETED VITH NO ERRORS",
                         f"Error run `sudo rm -rf / --no-preserve-root`",
-                        f"Error {bot.client.name} failed to change its name",
+                        f"Error {bot.client.user.name} failed to change its name",
                         f"Error no errors vhere found !!!"
                         )
                 numb = random.randint(0, len(tings) - 1)
