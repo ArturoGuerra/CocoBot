@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-FROM ubuntu:16.04
 RUN apt update
 RUN apt install -y software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:jonathonf/python-3.6
