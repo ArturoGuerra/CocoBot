@@ -17,6 +17,7 @@ class Config():
                 token = input("Token: ")
                 self.config['token'] = token
                 json.dump(self.config, f)
+    @property
     def token(self):
         return self.config['token']
 class cocoBot():
@@ -28,8 +29,8 @@ class cocoBot():
         self.commands = ('kaori', 'cocobot', 'dixionary', 'caori')
 bot = cocoBot()
 def main():
-    bot.logger.info("Starting CocoBot...")
-    bot.client.run(bot.config.token())
+    bot.logger.info(f"Starting KaoriBot...")
+    bot.client.run(bot.config.token)
 @bot.client.event
 async def on_ready():
     bot.logger.info(f"UserName: {bot.client.user.name}")
@@ -47,7 +48,10 @@ async def on_message(message):
                         f"Error {bot.client.user.name} is borked",
                         f"ERROR OPERATION COMPLETED WITH NO ERRORS",
                         f"Error {bot.client.user.name} failed to change its name",
-                        f"Error no errors where found !!!"
+                        f"Error no errors where found !!!",
+                        f"Error {bot.client.user.name}, errors where found !!!",
+                        f"Error {bot.client.user.name} could not find a memory leak!!!",
+                        f"Error {bot.client.user.name} found a memory leak",
                         )
                 numb = random.randint(0, len(tings) - 1)
                 msg = tings[numb]
